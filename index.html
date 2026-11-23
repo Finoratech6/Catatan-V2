@@ -2,156 +2,741 @@
 <html lang="id">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#101b35">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101a35">
 <title>FinoraTech Catatan Pro V3</title>
 
 <style>
-:root {
-  --bg:#f3f5fa;
-  --card:#ffffff;
-  --text:#17233d;
-  --muted:#8290a8;
-  --primary:#315efb;
-  --border:#e8edf5;
-  --shadow:0 8px 30px rgba(25,45,90,.07);
+:root{
+ --bg:#f3f6fc;
+ --card:#fff;
+ --text:#17233e;
+ --muted:#8390a8;
+ --primary:#4169f5;
+ --line:#e8edf5;
+ --soft:#edf2ff;
+ --shadow:0 8px 28px rgba(25,45,90,.07);
 }
-body.dark {
-  --bg:#101827;
-  --card:#1b2940;
-  --text:#f2f5ff;
-  --muted:#a4b1c8;
-  --border:#30415b;
-  --shadow:0 8px 30px rgba(0,0,0,.15);
+body.dark{
+ --bg:#101827;
+ --card:#1c2940;
+ --text:#f2f5ff;
+ --muted:#a4b1c8;
+ --line:#34425a;
+ --soft:#263858;
+ --shadow:0 8px 28px rgba(0,0,0,.15);
 }
 *{box-sizing:border-box}
 body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,sans-serif;transition:.2s;
+ margin:0;background:var(--bg);color:var(--text);
+ font-family:Arial,Helvetica,sans-serif;
+ transition:.2s;
 }
-header{
-  background:linear-gradient(120deg,#101b35,#244ba9);
-  color:white;padding:24px 6%;
-}
-.header-inner{
-  max-width:1100px;margin:auto;
-  display:flex;justify-content:space-between;align-items:center;
-  gap:15px;flex-wrap:wrap;
-}
-.brand{font-size:22px;font-weight:800}
-.brand span{color:#85b5ff}
-.subtitle{font-size:12px;color:#c5d5ff;margin-top:5px}
 button,input,select,textarea{font:inherit}
-button{cursor:pointer;border:0}
-.top-btn{
-  padding:10px 14px;border-radius:10px;
-  background:#ffffff20;color:white;margin:3px;
+button{cursor:pointer}
+header{
+ background:linear-gradient(125deg,#101a35,#244da8);
+ color:white;padding:25px 5%;
 }
-.container{max-width:1100px;margin:25px auto;padding:0 16px}
+.header{
+ max-width:1150px;margin:auto;
+ display:flex;align-items:center;
+ justify-content:space-between;gap:15px;flex-wrap:wrap;
+}
+.brand{font-size:24px;font-weight:800}
+.brand span{color:#8db7ff}
+.tagline{font-size:12px;color:#c9d9ff;margin-top:6px}
+.header-actions{display:flex;gap:8px;flex-wrap:wrap}
+.header-actions button{
+ background:#ffffff20;color:white;
+ padding:11px 15px;border-radius:10px;border:1px solid #ffffff25;
+}
+.container{max-width:1150px;margin:25px auto;padding:0 16px}
 .welcome{
-  background:var(--card);padding:22px;border-radius:18px;
-  box-shadow:var(--shadow);margin-bottom:20px;
+ background:var(--card);padding:23px;
+ border-radius:18px;box-shadow:var(--shadow);margin-bottom:20px;
 }
 .welcome h2{margin:0 0 8px}
 .muted{color:var(--muted);font-size:13px}
 .stats{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:12px;margin-bottom:20px;
+ display:grid;grid-template-columns:repeat(4,1fr);
+ gap:13px;margin-bottom:20px;
 }
 .stat{
-  background:var(--card);padding:18px;border-radius:15px;
-  box-shadow:var(--shadow);
+ background:var(--card);padding:19px;
+ border-radius:15px;box-shadow:var(--shadow);
 }
-.stat strong{display:block;font-size:25px;margin-top:8px}
+.stat .number{font-size:27px;font-weight:800;margin-top:9px}
 .layout{
-  display:grid;grid-template-columns:1fr 2fr;gap:18px;
+ display:grid;grid-template-columns:340px 1fr;gap:18px;
+ align-items:start;
 }
 .panel{
-  background:var(--card);padding:20px;border-radius:17px;
-  box-shadow:var(--shadow);margin-bottom:18px;
+ background:var(--card);padding:20px;
+ border-radius:17px;box-shadow:var(--shadow);margin-bottom:18px;
 }
-.panel h3{margin-top:0}
+.panel h3{margin:0 0 17px}
 input,select,textarea{
-  width:100%;padding:12px;margin:7px 0 13px;
-  border:1px solid var(--border);border-radius:10px;
-  background:var(--bg);color:var(--text);outline:none;
+ width:100%;padding:12px 13px;margin:6px 0 13px;
+ border:1px solid var(--line);border-radius:10px;
+ background:var(--bg);color:var(--text);outline:none;
 }
-textarea{min-height:140px;resize:vertical}
+textarea{min-height:145px;resize:vertical;line-height:1.6}
+input:focus,select:focus,textarea:focus{
+ border-color:var(--primary);
+}
 .primary{
-  background:var(--primary);color:white;
-  padding:12px 17px;border-radius:10px;font-weight:bold;
+ background:var(--primary);color:white;
+ border:0;padding:12px 17px;border-radius:10px;font-weight:bold;
 }
 .secondary{
-  background:var(--bg);color:var(--text);
-  padding:10px 13px;border-radius:9px;
-  border:1px solid var(--border);
+ background:var(--soft);color:var(--text);
+ border:1px solid var(--line);padding:10px 13px;border-radius:9px;
 }
+.danger{color:#e04d5a}
+.full{width:100%}
 .note{
-  border:1px solid var(--border);padding:16px;
-  border-radius:13px;margin:12px 0;
+ border:1px solid var(--line);border-radius:13px;
+ padding:16px;margin:12px 0;background:var(--card);
 }
-.note h4{margin:0 0 9px}
+.note.pinned{border-left:4px solid #eeb442}
+.note h4{margin:0 0 10px;font-size:16px}
 .note-content{
-  white-space:pre-wrap;overflow-wrap:anywhere;
-  font-size:14px;line-height:1.6;
+ white-space:pre-wrap;overflow-wrap:anywhere;
+ line-height:1.65;font-size:14px;margin:13px 0;
 }
-.note-meta{font-size:11px;color:var(--muted);margin-top:12px}
-.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
-.actions button{font-size:12px}
 .badge{
-  display:inline-block;background:#e8efff;color:#315efb;
-  padding:5px 9px;border-radius:20px;font-size:11px;
+ display:inline-block;background:var(--soft);
+ color:var(--primary);padding:5px 10px;
+ border-radius:30px;font-size:11px;
 }
-.note.pinned{border-left:4px solid #f5b942}
-.empty{text-align:center;color:var(--muted);padding:35px}
+.note-meta{font-size:11px;color:var(--muted)}
+.actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}
+.actions button{font-size:12px}
+.empty{
+ text-align:center;padding:35px 10px;color:var(--muted);
+ line-height:1.8;
+}
 .reminder{
-  padding:12px;border-radius:10px;
-  background:var(--bg);margin:8px 0;
-  border:1px solid var(--border);
+ border:1px solid var(--line);background:var(--bg);
+ padding:13px;border-radius:11px;margin:9px 0;
 }
-footer{text-align:center;padding:25px;color:var(--muted);font-size:12px}
+.reminder strong{display:block;margin-bottom:6px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap}
+.toolbar input{flex:1;min-width:140px}
+.calendar-result{
+ background:var(--soft);padding:13px;border-radius:10px;
+ margin-top:8px;font-size:13px;
+}
+footer{
+ text-align:center;color:var(--muted);
+ font-size:12px;padding:25px 10px;
+}
 .hidden{display:none!important}
-#lockScreen{
-  position:fixed;inset:0;background:#101b35;z-index:99;
-  display:flex;align-items:center;justify-content:center;padding:20px;
+.modal{
+ position:fixed;inset:0;background:#071126c9;
+ display:flex;align-items:center;justify-content:center;
+ z-index:99;padding:20px;
 }
-.lock-box{
-  background:white;color:#17233d;padding:30px;
-  border-radius:20px;width:100%;max-width:350px;text-align:center;
+.modal-box{
+ background:white;color:#17233e;padding:27px;
+ border-radius:18px;width:100%;max-width:350px;text-align:center;
 }
-.lock-box input{text-align:center;font-size:24px;letter-spacing:8px}
-@media(max-width:700px){
-  .layout{grid-template-columns:1fr}
-  .stats{gap:8px}
-  .stat{padding:13px}
-  .stat strong{font-size:21px}
-  header{padding:20px 16px}
+.modal-box input{text-align:center;font-size:24px;letter-spacing:7px}
+@media(max-width:800px){
+ .layout{grid-template-columns:1fr}
+ .stats{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:480px){
+ header{padding:22px 17px}
+ .brand{font-size:21px}
+ .container{margin:17px auto}
+ .panel{padding:16px}
+ .stat{padding:14px}
+ .stat .number{font-size:23px}
+ .header-actions button{padding:10px 12px}
 }
 </style>
 </head>
 
 <body>
 
-<div id="lockScreen" class="hidden">
-  <div class="lock-box">
-    <h2>🔐 FinoraTech</h2>
-    <p id="lockMessage">Masukkan PIN untuk membuka catatan</p>
-    <input id="pinInput" type="password" maxlength="6"
-      inputmode="numeric" placeholder="••••">
-    <button class="primary" style="width:100%" onclick="unlock()">
-      Buka Aplikasi
-    </button>
-    <p id="pinError" style="color:red;font-size:12px"></p>
-  </div>
+<!-- PIN LOCK -->
+<div id="lockModal" class="modal hidden">
+ <div class="modal-box">
+  <h2>🔐 FinoraTech</h2>
+  <p>Masukkan PIN untuk membuka aplikasi.</p>
+  <input id="unlockPin" type="password" maxlength="6"
+   inputmode="numeric" placeholder="••••">
+  <button class="primary full" onclick="unlockApp()">Buka Aplikasi</button>
+  <p id="pinError" class="danger"></p>
+ </div>
 </div>
 
 <header>
-  <div class="header-inner">
-    <div>
-      <div class="brand">Finora<span>Tech</span> Catatan Pro</div>
-      <div class="subtitle">V3 PREMIUM EDITION · Your Ideas, Organized.</div>
+ <div class="header">
+  <div>
+   <div class="brand">Finora<span>Tech</span> Catatan Pro</div>
+   <div class="tagline">V3 COMPLETE EDITION · Your Ideas, Organized.</div>
+  </div>
+
+  <div class="header-actions">
+   <button onclick="toggleTheme()">◐ Tema</button>
+   <button onclick="exportBackup()">Backup</button>
+   <button onclick="document.getElementById('importFile').click()">Import</button>
+   <input id="importFile" type="file" accept=".json"
+    class="hidden" onchange="importBackup(event)">
+  </div>
+ </div>
+</header>
+
+<main class="container">
+
+ <section class="welcome">
+  <h2>Selamat datang 👋</h2>
+  <p class="muted">Tempat menyimpan ide, rencana, dan semua hal pentingmu.</p>
+  <strong id="currentDate"></strong>
+ </section>
+
+ <section class="stats">
+  <div class="stat">
+   <div class="muted">Total Catatan</div>
+   <div class="number" id="statNotes">0</div>
+  </div>
+  <div class="stat">
+   <div class="muted">Catatan Penting</div>
+   <div class="number" id="statPinned">0</div>
+  </div>
+  <div class="stat">
+   <div class="muted">Pengingat</div>
+   <div class="number" id="statReminders">0</div>
+  </div>
+  <div class="stat">
+   <div class="muted">Kategori</div>
+   <div class="number">6</div>
+  </div>
+ </section>
+
+ <div class="layout">
+
+  <!-- KOLOM KIRI -->
+  <div>
+
+   <section class="panel">
+    <h3>✍️ Buat Catatan</h3>
+
+    <label class="muted">Judul</label>
+    <input id="title" placeholder="Contoh: Rencana minggu ini">
+
+    <label class="muted">Kategori</label>
+    <select id="category">
+     <option>Pribadi</option>
+     <option>Pekerjaan</option>
+     <option>Ide</option>
+     <option>Keuangan</option>
+     <option>Belajar</option>
+     <option>Lainnya</option>
+    </select>
+
+    <label class="muted">Isi Catatan</label>
+    <textarea id="content" placeholder="Tuliskan catatanmu di sini..."></textarea>
+
+    <button class="primary full" onclick="saveNote()">＋ Simpan Catatan</button>
+    <button id="cancelEdit" class="secondary full hidden"
+     style="margin-top:8px" onclick="resetForm()">Batalkan Edit</button>
+   </section>
+
+   <section class="panel">
+    <h3>📅 Kalender</h3>
+    <label class="muted">Pilih tanggal</label>
+    <input type="date" id="calendarDate" onchange="showCalendar()">
+    <div id="calendarResult" class="calendar-result">
+     Pilih tanggal untuk melihat agenda.
     </div>
-    <div>
-      <button class="top-btn" onclick="toggleDark()">◐ Tema</button>
-      <button class="top-btn" onclick="backup()">Backup</button>
-      <button class="top
+   </section>
+
+   <section class="panel">
+    <h3>🔔 Buat Pengingat</h3>
+    <input id="reminderName" placeholder="Nama pengingat">
+    <input id="reminderDate" type="date">
+    <input id="reminderTime" type="time">
+    <button class="primary full" onclick="addReminder()">＋ Tambah Pengingat</button>
+    <p class="muted">Pengingat berbunyi selama aplikasi terbuka.</p>
+   </section>
+
+   <section class="panel">
+    <h3>🔐 Keamanan Aplikasi</h3>
+    <p class="muted">Buat PIN 4–6 angka untuk mengunci aplikasi.</p>
+    <input id="newPin" type="password" maxlength="6"
+     inputmode="numeric" placeholder="Masukkan PIN baru">
+    <button class="primary full" onclick="setPin()">Aktifkan PIN</button>
+    <button class="secondary full" style="margin-top:8px"
+     onclick="removePin()">Nonaktifkan PIN</button>
+   </section>
+
+  </div>
+
+  <!-- KOLOM KANAN -->
+  <div>
+
+   <section class="panel">
+    <h3>📚 Semua Catatan</h3>
+
+    <div class="toolbar">
+     <input id="search" placeholder="Cari catatan..."
+      oninput="renderNotes()">
+     <select id="filter" onchange="renderNotes()">
+      <option value="Semua">Semua Kategori</option>
+      <option>Pribadi</option>
+      <option>Pekerjaan</option>
+      <option>Ide</option>
+      <option>Keuangan</option>
+      <option>Belajar</option>
+      <option>Lainnya</option>
+     </select>
+    </div>
+
+    <div id="notesList"></div>
+   </section>
+
+   <section class="panel">
+    <h3>⏰ Daftar Pengingat</h3>
+    <div id="reminderList"></div>
+   </section>
+
+  </div>
+ </div>
+</main>
+
+<footer>
+ <strong>FinoraTech Catatan Pro V3</strong><br>
+ Productivity · Creativity · Organization<br>
+ © 2026 FinoraTech. All rights reserved.
+</footer>
+
+<script>
+"use strict";
+
+/* PENYIMPANAN DATA */
+const NOTE_KEY = "finoratech_v3_notes";
+const REMINDER_KEY = "finoratech_v3_reminders";
+const PIN_KEY = "finoratech_v3_pin";
+const THEME_KEY = "finoratech_v3_theme";
+
+function loadData(key){
+ try{
+  const value=JSON.parse(localStorage.getItem(key)||"[]");
+  return Array.isArray(value)?value:[];
+ }catch(error){
+  return [];
+ }
+}
+
+let notes=loadData(NOTE_KEY);
+let reminders=loadData(REMINDER_KEY);
+let editingId=null;
+
+function saveData(){
+ localStorage.setItem(NOTE_KEY,JSON.stringify(notes));
+ localStorage.setItem(REMINDER_KEY,JSON.stringify(reminders));
+ updateStats();
+}
+
+/* TANGGAL */
+function todayString(){
+ const d=new Date();
+ return d.getFullYear()+"-"+
+  String(d.getMonth()+1).padStart(2,"0")+"-"+
+  String(d.getDate()).padStart(2,"0");
+}
+
+document.getElementById("currentDate").textContent=
+ new Date().toLocaleDateString("id-ID",{
+  weekday:"long",day:"numeric",month:"long",year:"numeric"
+ });
+
+document.getElementById("calendarDate").value=todayString();
+
+/* STATISTIK */
+function updateStats(){
+ document.getElementById("statNotes").textContent=notes.length;
+ document.getElementById("statPinned").textContent=
+  notes.filter(n=>n.pinned).length;
+ document.getElementById("statReminders").textContent=reminders.length;
+}
+
+/* KEAMANAN HTML */
+function safe(value){
+ return String(value).replace(/[&<>"']/g,function(c){
+  return {
+   "&":"&amp;",
+   "<":"&lt;",
+   ">":"&gt;",
+   '"':"&quot;",
+   "'":"&#39;"
+  }[c];
+ });
+}
+
+/* SIMPAN CATATAN */
+function saveNote(){
+ const title=document.getElementById("title").value.trim();
+ const content=document.getElementById("content").value.trim();
+ const category=document.getElementById("category").value;
+
+ if(!title||!content){
+  alert("Judul dan isi catatan wajib diisi.");
+  return;
+ }
+
+ if(editingId!==null){
+  const note=notes.find(n=>n.id===editingId);
+  if(note){
+   note.title=title;
+   note.content=content;
+   note.category=category;
+   note.updated=new Date().toISOString();
+  }
+ }else{
+  notes.unshift({
+   id:Date.now(),
+   title:title,
+   content:content,
+   category:category,
+   pinned:false,
+   created:new Date().toISOString()
+  });
+ }
+
+ saveData();
+ resetForm();
+ renderNotes();
+}
+
+function resetForm(){
+ editingId=null;
+ document.getElementById("title").value="";
+ document.getElementById("content").value="";
+ document.getElementById("category").value="Pribadi";
+ document.getElementById("cancelEdit").classList.add("hidden");
+}
+
+function editNote(id){
+ const n=notes.find(x=>x.id===id);
+ if(!n)return;
+
+ editingId=id;
+ document.getElementById("title").value=n.title;
+ document.getElementById("content").value=n.content;
+ document.getElementById("category").value=n.category;
+ document.getElementById("cancelEdit").classList.remove("hidden");
+
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function deleteNote(id){
+ if(!confirm("Yakin ingin menghapus catatan ini?"))return;
+ notes=notes.filter(n=>n.id!==id);
+ saveData();
+ renderNotes();
+}
+
+function togglePin(id){
+ const n=notes.find(x=>x.id===id);
+ if(!n)return;
+ n.pinned=!n.pinned;
+ saveData();
+ renderNotes();
+}
+
+/* TAMPILKAN CATATAN */
+function renderNotes(){
+ const list=document.getElementById("notesList");
+ const q=document.getElementById("search").value.toLowerCase();
+ const filter=document.getElementById("filter").value;
+
+ const result=notes.filter(n=>{
+  const match=(n.title+" "+n.content+" "+n.category).toLowerCase().includes(q);
+  const category=filter==="Semua"||n.category===filter;
+  return match&&category;
+ }).sort((a,b)=>Number(b.pinned)-Number(a.pinned));
+
+ if(!result.length){
+  list.innerHTML='<div class="empty">📝<br>Belum ada catatan.<br>Mulai tulis ide pertamamu!</div>';
+  return;
+ }
+
+ list.innerHTML=result.map(n=>`
+  <article class="note ${n.pinned?"pinned":""}">
+   <h4>${n.pinned?"📌 ":""}${safe(n.title)}</h4>
+   <span class="badge">${safe(n.category)}</span>
+   <p class="note-content">${safe(n.content)}</p>
+   <div class="note-meta">
+    Dibuat: ${new Date(n.created).toLocaleString("id-ID")}
+    ${n.updated?" · Diedit: "+new Date(n.updated).toLocaleString("id-ID"):""}
+   </div>
+   <div class="actions">
+    <button class="secondary" onclick="editNote(${n.id})">✏️ Edit</button>
+    <button class="secondary" onclick="togglePin(${n.id})">
+     ${n.pinned?"Lepas Pin":"📌 Sematkan"}
+    </button>
+    <button class="secondary" onclick="printNote(${n.id})">🖨️ Cetak</button>
+    <button class="secondary danger" onclick="deleteNote(${n.id})">🗑️ Hapus</button>
+   </div>
+  </article>
+ `).join("");
+}
+
+/* CETAK CATATAN */
+function printNote(id){
+ const n=notes.find(x=>x.id===id);
+ if(!n)return;
+
+ const w=window.open("","_blank");
+ if(!w){
+  alert("Izinkan pop-up untuk menggunakan fitur cetak.");
+  return;
+ }
+
+ w.document.write(`
+  <!DOCTYPE html>
+  <html><head><title>${safe(n.title)}</title>
+  <style>
+   body{font-family:Arial;padding:35px;line-height:1.7}
+   h1{color:#203d86}
+   p{white-space:pre-wrap}
+  </style></head>
+  <body>
+   <h1>${safe(n.title)}</h1>
+   <small>${safe(n.category)}</small><hr>
+   <p>${safe(n.content)}</p>
+   <small>FinoraTech Catatan Pro</small>
+  </body></html>
+ `);
+ w.document.close();
+ w.focus();
+ w.print();
+}
+
+/* PENGINGAT */
+function addReminder(){
+ const title=document.getElementById("reminderName").value.trim();
+ const date=document.getElementById("reminderDate").value;
+ const time=document.getElementById("reminderTime").value;
+
+ if(!title||!date||!time){
+  alert("Lengkapi nama, tanggal, dan jam pengingat.");
+  return;
+ }
+
+ reminders.push({
+  id:Date.now(),
+  title:title,
+  date:date,
+  time:time,
+  notified:false
+ });
+
+ saveData();
+ renderReminders();
+
+ document.getElementById("reminderName").value="";
+ document.getElementById("reminderDate").value="";
+ document.getElementById("reminderTime").value="";
+
+ alert("Pengingat berhasil dibuat.");
+}
+
+function deleteReminder(id){
+ if(!confirm("Hapus pengingat ini?"))return;
+ reminders=reminders.filter(r=>r.id!==id);
+ saveData();
+ renderReminders();
+ showCalendar();
+}
+
+function renderReminders(){
+ const box=document.getElementById("reminderList");
+
+ if(!reminders.length){
+  box.innerHTML='<div class="empty">Belum ada pengingat.</div>';
+  return;
+ }
+
+ const sorted=[...reminders].sort((a,b)=>
+  (a.date+a.time).localeCompare(b.date+b.time)
+ );
+
+ box.innerHTML=sorted.map(r=>`
+  <div class="reminder">
+   <strong>🔔 ${safe(r.title)}</strong>
+   <div class="muted">${safe(r.date)} · ${safe(r.time)}</div>
+   <div class="actions">
+    <button class="secondary danger"
+     onclick="deleteReminder(${r.id})">Hapus</button>
+   </div>
+  </div>
+ `).join("");
+}
+
+/* KALENDER */
+function showCalendar(){
+ const date=document.getElementById("calendarDate").value;
+ const box=document.getElementById("calendarResult");
+ const found=reminders.filter(r=>r.date===date);
+
+ if(!found.length){
+  box.textContent="Tidak ada pengingat pada tanggal ini.";
+  return;
+ }
+
+ box.innerHTML=found.map(r=>
+  `<p>🔔 ${safe(r.time)} — ${safe(r.title)}</p>`
+ ).join("");
+}
+
+/* PEMERIKSA PENGINGAT */
+function checkReminders(){
+ const now=new Date();
+ const date=todayString();
+ const time=String(now.getHours()).padStart(2,"0")+":"+
+  String(now.getMinutes()).padStart(2,"0");
+
+ let changed=false;
+
+ reminders.forEach(r=>{
+  if(r.date===date&&r.time===time&&!r.notified){
+   r.notified=true;
+   changed=true;
+   alert("🔔 PENGINGAT FINORATECH\n\n"+r.title);
+  }
+ });
+
+ if(changed)saveData();
+}
+
+/* BACKUP */
+function exportBackup(){
+ const data={
+  app:"FinoraTech Catatan Pro",
+  version:"V3",
+  exportedAt:new Date().toISOString(),
+  notes:notes,
+  reminders:reminders
+ };
+
+ const blob=new Blob([JSON.stringify(data,null,2)],{
+  type:"application/json"
+ });
+
+ const url=URL.createObjectURL(blob);
+ const a=document.createElement("a");
+ a.href=url;
+ a.download="FinoraTech-Catatan-Pro-Backup.json";
+ a.click();
+ setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+/* IMPORT */
+function importBackup(event){
+ const file=event.target.files[0];
+ if(!file)return;
+
+ const reader=new FileReader();
+
+ reader.onload=function(e){
+  try{
+   const data=JSON.parse(e.target.result);
+
+   if(!Array.isArray(data.notes)||!Array.isArray(data.reminders)){
+    throw new Error("Format tidak sesuai");
+   }
+
+   if(!confirm("Data saat ini akan diganti. Lanjutkan?"))return;
+
+   notes=data.notes;
+   reminders=data.reminders;
+
+   saveData();
+   renderNotes();
+   renderReminders();
+   showCalendar();
+
+   alert("Backup berhasil dipulihkan.");
+  }catch(error){
+   alert("File backup tidak valid.");
+  }finally{
+   event.target.value="";
+  }
+ };
+
+ reader.readAsText(file);
+}
+
+/* TEMA */
+function toggleTheme(){
+ document.body.classList.toggle("dark");
+
+ localStorage.setItem(
+  THEME_KEY,
+  document.body.classList.contains("dark")?"dark":"light"
+ );
+}
+
+if(localStorage.getItem(THEME_KEY)==="dark"){
+ document.body.classList.add("dark");
+}
+
+/* PIN */
+function setPin(){
+ const pin=document.getElementById("newPin").value;
+
+ if(!/^\d{4,6}$/.test(pin)){
+  alert("PIN harus 4 sampai 6 angka.");
+  return;
+ }
+
+ localStorage.setItem(PIN_KEY,pin);
+ document.getElementById("newPin").value="";
+
+ alert("PIN berhasil diaktifkan. Muat ulang aplikasi untuk mengunci.");
+}
+
+function removePin(){
+ if(!confirm("Yakin ingin menonaktifkan PIN?"))return;
+
+ localStorage.removeItem(PIN_KEY);
+ document.getElementById("lockModal").classList.add("hidden");
+
+ alert("PIN berhasil dinonaktifkan.");
+}
+
+function unlockApp(){
+ const pin=document.getElementById("unlockPin").value;
+ const saved=localStorage.getItem(PIN_KEY);
+
+ if(pin===saved){
+  document.getElementById("lockModal").classList.add("hidden");
+  document.getElementById("pinError").textContent="";
+ }else{
+  document.getElementById("pinError").textContent="PIN salah. Coba lagi.";
+  document.getElementById("unlockPin").value="";
+ }
+}
+
+if(localStorage.getItem(PIN_KEY)){
+ document.getElementById("lockModal").classList.remove("hidden");
+}
+
+/* JALANKAN APLIKASI */
+updateStats();
+renderNotes();
+renderReminders();
+showCalendar();
+
+setInterval(checkReminders,10000);
+checkReminders();
+
+</script>
+</body>
+</html>
